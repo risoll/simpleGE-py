@@ -12,4 +12,4 @@ for head in headers:
     print i, data[head]
     i += 1 
 
-print "asma1, fitur 0", data["asma1"][0]
+print "asma1, fitur 1", data["asma1"][0]
