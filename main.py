@@ -9,7 +9,7 @@ data = load.createDict(rawData)
 
 i = 0
 for head in headers:
-    print i, data[head]
+    print(i, data[head])
     i += 1 
 
-print "asma1, fitur 1", data["asma1"][0]
+print("asma1, fitur 1", data["asma1"][2])
