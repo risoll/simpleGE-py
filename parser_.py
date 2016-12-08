@@ -90,8 +90,9 @@ def run(kromosom):
         continue
       else :#
 #        return(fkrom,"".join(np.hstack(aryfunct)))
-        return np.hstack(aryfunct)
-#        print(eval("".join(np.hstack(aryfunct))))      
+        # print(eval("".join(np.hstack(aryfunct))))  
+        return ''.join(np.hstack(aryfunct))
+        # return temp[i]    
         break
     
 

@@ -17,20 +17,20 @@ def runit(kromosom):
 
   intkromosom=op.decodebintoint(''.join(str(i) for  i in kromosom),4)#dekode
   s=prs.run(intkromosom)
-  print(s)
+  # print(s)
   while it<1:
     if prs.stopping(str(s)):
-      print(kromosom)
+      # print(kromosom)
       kromosom_=np.random.randint(2,size=32)
       intkromosom=op.decodebintoint(''.join(str(i) for  i in kromosom_),4)
       s=prs.run(intkromosom)
     else:
       it+=1
-  return str(s)
+  return s
   
 def loadtoarray(filepath):
   mat= np.loadtxt(filepath,delimiter=',')
-  mat=mat.reshape(mat.shape[1],mat.shape[0])
+  mat=mat.T
   return mat
   
   
@@ -44,7 +44,11 @@ def fitness(mat,l,kromosom,nRow):
   for i in range(l):
     locals()['x'+str(i+1)] = mat[i]#instansiansi variabel x1..xn buat diujikan ke ekpsresi hasil GE
   s=runit(kromosom)
-#  s=("x3[i]<x2[i]") #uncommend juga ingin cek nilai fitness dari ekspresi ini
+  # s=("x3[i]<x2[i]") #uncommend juga ingin cek nilai fitness dari ekspresi ini
+  # print ''.join((str, s))
+  # for i in s:
+  #       print("i",i)
+  print("s", eval(s))
   for i in range(nRow):
     #jika nilai ekpsresi true
     if eval(s)==True :
@@ -67,13 +71,13 @@ def fitness(mat,l,kromosom,nRow):
 #          continue#lanjut ke char berikutnya
         
         
-    fit=n/nRow
+    fit=n/nRow * 100
      
   return fit,kromosom,s
     
 if __name__ == "__main__":
   #test
-  mat=loadtoarray('G:/ec/datasetfix.csv')
+  mat=loadtoarray('./data/datasetfix.csv')
   krom = np.random.randint(2,size=32)
   r=13
   l=15
