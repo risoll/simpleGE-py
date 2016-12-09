@@ -48,7 +48,7 @@ def fitness(mat,l,kromosom,nRow):
   # print ''.join((str, s))
   # for i in s:
   #       print("i",i)
-  print("s", eval(s))
+#  print("s", eval(s))
   for i in range(nRow):
     #jika nilai ekpsresi true
     if eval(s)==True :
@@ -73,7 +73,7 @@ def fitness(mat,l,kromosom,nRow):
         
     fit=n/nRow * 100
      
-  return fit,kromosom,s
+  return fit
     
 if __name__ == "__main__":
   #test

@@ -23,11 +23,11 @@ def decodebintoint(chrom,lim):
 def crossover(p1,p2,pc):
   if(rd.random()<=pc):
     tipot = rd.randint(1,len(p1)-1)  
-    c1=p1[tipot:]+p2[:tipot]
-    c2=p1[:tipot]+p2[tipot:]
+    c1=np.append(p1[tipot:],p2[:tipot])
+    c2=np.append(p1[:tipot]+p2[tipot:])
     return c1,c2
   else:
-    return 0
+    return p1,p2
   
 def binarymutation(kromosom,pm):
   for gen in range(len(kromosom)):
@@ -38,6 +38,23 @@ def binarymutation(kromosom,pm):
         kromosom[gen]=0
     
     return kromosom
+
+def rwheel(pop, fit, num):
+#    print(fit)
+    total_fitness = float(sum(fit))
+    rel_fitness = [f/total_fitness for f in fit]
+    #generate probabilitas kemunculan tiap individu
+    probs = [sum(rel_fitness[:i+1]) for i in range(len(rel_fitness))]
+    # populasi baru
+    new_pop = []
+    for n in range(num):
+        r = np.random.rand()
+        for (i, individual) in enumerate(pop):
+            if r <= probs[i]:
+                new_pop.append(individual)
+                break
+#    print(len(new_pop))
+    return new_pop
     
 def duplicate(bitstring):
   return bitstring+np.random.shuffle(bitstring)
