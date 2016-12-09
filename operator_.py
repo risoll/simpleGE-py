@@ -10,13 +10,18 @@ import numpy as np
 
 def decodebintoint(chrom,lim):
   nChrom=[]
+#  print(chrom)
   y=0
   for nGen in range(int(len(chrom)/lim)):
-    x=int(str(chrom[y:y+lim]),2)
+#    print(chrom)
+#    x=int(str(chrom[y:y+lim]),2)
+    pchrom=chrom[y:y+lim]
+    pchrom=''.join(map(str,pchrom))
+    nChrom+=[int(pchrom,2)]
     y+=lim
 #    print(x)
-    nChrom+=[x]
-    
+   
+#  print(nChrom)
   return nChrom
     
   
@@ -24,7 +29,7 @@ def crossover(p1,p2,pc):
   if(rd.random()<=pc):
     tipot = rd.randint(1,len(p1)-1)  
     c1=np.append(p1[tipot:],p2[:tipot])
-    c2=np.append(p1[:tipot]+p2[tipot:])
+    c2=np.append(p1[:tipot],p2[tipot:])
     return c1,c2
   else:
     return p1,p2

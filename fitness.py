@@ -14,7 +14,7 @@ import parser_ as prs
 def runit(kromosom):
   it=0
   kromosom=np.array(kromosom)
-
+#  print('k -',kromosom)
   intkromosom=op.decodebintoint(''.join(str(i) for  i in kromosom),4)#dekode
   s=prs.run(intkromosom)
   # print(s)
@@ -43,6 +43,7 @@ def fitness(mat,l,kromosom,nRow):
 
   for i in range(l):
     locals()['x'+str(i+1)] = mat[i]#instansiansi variabel x1..xn buat diujikan ke ekpsresi hasil GE
+#  print('s',kromosom)
   s=runit(kromosom)
   # s=("x3[i]<x2[i]") #uncommend juga ingin cek nilai fitness dari ekspresi ini
   # print ''.join((str, s))
@@ -71,7 +72,7 @@ def fitness(mat,l,kromosom,nRow):
 #          continue#lanjut ke char berikutnya
         
         
-    fit=n/nRow * 100
+    fit=n+0.01/nRow * 100
      
   return fit
     
