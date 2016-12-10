@@ -4,7 +4,7 @@ Created on Mon Dec  5 00:58:53 2016
 
 @author: R16
 """
-
+#import sklearn.metrics.confusion_matrix
 import numpy as np
 import operator_ as op
 import parser_ as prs
@@ -26,7 +26,7 @@ def runit(kromosom):
       s=prs.run(intkromosom)
     else:
       it+=1
-  return s
+  return s,kromosom
   
 def loadtoarray(filepath):
   mat= np.loadtxt(filepath,delimiter=',')
@@ -50,10 +50,13 @@ def fitness(mat,l,kromosom,nRow):
   # for i in s:
   #       print("i",i)
 #  print("s", eval(s))
-  for i in range(nRow):
+  for i in range(13):
     #jika nilai ekpsresi true
-    if eval(s)==True :
+    if eval(s[0])==True :
       # fitness ++
+      n+=1
+  for i in range(13,28):
+    if eval(s[0])==False:
       n+=1
       
 #    else: 
@@ -72,9 +75,9 @@ def fitness(mat,l,kromosom,nRow):
 #          continue#lanjut ke char berikutnya
         
         
-    fit=n+0.01/nRow * 100
+    fit=n/nRow * 100
      
-  return fit
+  return fit,s[1]
     
 if __name__ == "__main__":
   #test

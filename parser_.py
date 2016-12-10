@@ -40,10 +40,10 @@ funct=['log','abs','sqrt','exp']
 #       'f': {'f1':'log','f2':'exp','f3':'sqrt'}
 #       }
        
-rules={'e': {'e1': ['e', 'o', 'e'], 'e2': ['(','e','o','e',')'], 'e3': 'v','e4': ['(','e','o','e',')','p','(','e','o','e',')'],'e5':'v','e6':'v'}, 
+rules={'e': {'e1': ['e', 'o', 'e'], 'e2': ['(','e','o','e',')'], 'e3': 'v','e4': ['(','e','o','e',')','p','(','e','o','e',')']}, 
        'o': {'o1':'>','o2':'<'},
        'p': {'op1' :'and','op2' :'or'},
-       'v': {'v1':'x1[i]','v2':'x2[i]','v3':'x3[i]','v4':'x4[i]','v5':'x5[i]','v6':'x6[i]','v7':'x7[i]','v8':'x8[i]','v9':'x9[i]','x10':'x10[i]'},
+       'v': {'v1':'x1[i]','v2':'x2[i]','v3':'x3[i]','v4':'x4[i]','v5':'x5[i]','v6':'x6[i]','v7':'x7[i]','v8':'x8[i]','v9':'x9[i]','x10':'x10[i]','x11':'x11[i]'},
        'n': {'n0':'0','n1':'1','n2':'2','n3':'3','n4':'4','n5':'5','n6':'6','n7':'8','n9':'9'},
 #       'f': {'f1':'log','f2':'exp','f3':'sqrt'}
        }
@@ -78,7 +78,7 @@ def run(kromosom):
 #      stackvar=stackvar+evalpar(aryfunct,temp[i])[1]
 #    if aryfunct[-1] == stackver[-1]:
 #      aryfunct.pop()
-    if len(aryfunct)>30:#berhenti ketika panjang string fungsi >30
+    if len(aryfunct)>100:#berhenti ketika panjang string fungsi >30
 #      print(fkrom,"".join(np.hstack(aryfunct)))
       break
     
